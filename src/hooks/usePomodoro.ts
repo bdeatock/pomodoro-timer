@@ -119,7 +119,6 @@ export function usePomodoro({
       isRunning: focusTimeStopwatch.isRunning,
     },
     toggleTimer,
-    totalSecondsBetweenLongBreaks,
     focusTimeUntilNextLongBreak,
   };
 }

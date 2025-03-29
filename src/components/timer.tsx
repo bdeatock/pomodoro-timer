@@ -22,7 +22,6 @@ const Timer = ({
     timer,
     focusTimeStopwatch,
     toggleTimer,
-    totalSecondsBetweenLongBreaks,
     focusTimeUntilNextLongBreak,
   } = usePomodoro({
     mode,
