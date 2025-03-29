@@ -1,45 +1,54 @@
 import type { TimerMode } from "../app";
-import { useEffect } from "react";
-import { useTimer } from "react-timer-hook";
-import { formatTime, getExpiryTimestamp } from "../utils";
+import { usePomodoro } from "../hooks/usePomodoro";
+import { formatTime, formatTimeWithUnits } from "../utils";
 import CentreTimer from "./centre-timer/centre-timer";
+import DailyTracker from "./daily-tracker";
+import FocusUntilBreak from "./focus-until-break";
+
+interface TimerProps {
+  mode: TimerMode;
+  modeDurations: Record<TimerMode, number>;
+  setMode: (mode: TimerMode) => void;
+  pomosPerLongBreak: number;
+}
 
 const Timer = ({
   mode,
   modeDurations,
-}: {
-  mode: TimerMode;
-  modeDurations: Record<TimerMode, number>;
-}) => {
+  setMode,
+  pomosPerLongBreak,
+}: TimerProps) => {
   const {
-    totalSeconds: remainingSeconds,
-    isRunning,
-    resume,
-    pause,
-    restart,
-  } = useTimer({
-    expiryTimestamp: getExpiryTimestamp(modeDurations[mode] * 60),
-    interval: 200,
-    autoStart: false,
+    timer,
+    focusTimeStopwatch,
+    toggleTimer,
+    totalSecondsBetweenLongBreaks,
+  } = usePomodoro({
+    mode,
+    modeDurations,
+    setMode,
     onExpire: () => {
-      console.warn("expired");
+      console.warn("Timer expired");
     },
+    targetPomodoroCount: pomosPerLongBreak,
   });
-
-  useEffect(() => {
-    restart(getExpiryTimestamp(modeDurations[mode] * 60), false);
-  }, [mode, modeDurations, restart]);
 
   return (
     <>
-      <p>Time until long break: 48m</p>
-      <CentreTimer
-        remainingTime={formatTime(remainingSeconds)}
-        resumeTimer={resume}
-        pauseTimer={pause}
-        isRunning={isRunning}
+      <FocusUntilBreak
+        timeUntilBreak={formatTimeWithUnits(
+          totalSecondsBetweenLongBreaks - focusTimeStopwatch.totalSeconds,
+        )}
       />
-      <p>Today: 2h 15m</p>
+      <CentreTimer
+        remainingTime={formatTime(timer.totalSeconds)}
+        toggleTimer={toggleTimer}
+      />
+      <DailyTracker
+        totalDailyFocusTime={formatTimeWithUnits(
+          focusTimeStopwatch.totalSeconds,
+        )}
+      />
     </>
   );
 };

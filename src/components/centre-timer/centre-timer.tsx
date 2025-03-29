@@ -1,20 +1,15 @@
-const CentreTimer = ({
-  remainingTime,
-  resumeTimer,
-  pauseTimer,
-  isRunning,
-}: {
+interface CentreTimerProps {
   remainingTime: string;
-  resumeTimer: () => void;
-  pauseTimer: () => void;
-  isRunning: boolean;
-}) => {
+  toggleTimer: () => void;
+}
+
+const CentreTimer = ({ remainingTime, toggleTimer }: CentreTimerProps) => {
   return (
     <button
       type="button"
-      onClick={isRunning ? pauseTimer : resumeTimer}
+      onClick={toggleTimer}
       className="flex h-40 w-40 cursor-pointer items-center justify-center rounded-full bg-gray-800"
-      aria-label="Pause/Resume timer"
+      aria-label="Toggle timer"
     >
       <p>{remainingTime}</p>
     </button>

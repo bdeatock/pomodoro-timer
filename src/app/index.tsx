@@ -11,10 +11,12 @@ const App = () => {
   const [modeDurations, _setModeDurations] = useState<
     Record<TimerMode, number>
   >({
-    focus: 25,
-    "short break": 5,
-    "long break": 15,
+    focus: 1,
+    "short break": 1,
+    "long break": 2,
   });
+
+  const pomosPerLongBreak = 4;
 
   return (
     <>
@@ -25,7 +27,12 @@ const App = () => {
 
         <ModeSwitcher mode={mode} setMode={setMode} />
 
-        <Timer mode={mode} modeDurations={modeDurations} />
+        <Timer
+          mode={mode}
+          modeDurations={modeDurations}
+          setMode={setMode}
+          pomosPerLongBreak={pomosPerLongBreak}
+        />
 
         <button type="button">
           <Icon icon="ic:round-settings" className="h-6 w-6 text-gray-300" />
