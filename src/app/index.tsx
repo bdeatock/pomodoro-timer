@@ -1,19 +1,22 @@
-import { Icon } from "@iconify/react";
 import { useState } from "react";
 import ModeSwitcher from "../components/mode-switcher";
 import Timer from "../components/timer";
+import Settings from "../components/settings";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 export type TimerMode = "focus" | "short break" | "long break";
 
 const App = () => {
   const [mode, setMode] = useState<TimerMode>("focus");
-
-  const [modeDurations, _setModeDurations] = useState<
+  const [modeDurations, setModeDurations] = useLocalStorage<
     Record<TimerMode, number>
   >({
-    focus: 25,
-    "short break": 5,
-    "long break": 15,
+    key: "modeDurations",
+    defaultValue: {
+      focus: 25,
+      "short break": 5,
+      "long break": 15,
+    },
   });
 
   const pomosPerLongBreak = 4;
@@ -34,12 +37,10 @@ const App = () => {
           pomosPerLongBreak={pomosPerLongBreak}
         />
 
-        <button type="button">
-          <Icon
-            icon="ic:round-settings"
-            className="h-6 w-6 text-primary-darker"
-          />
-        </button>
+        <Settings
+          modeDurations={modeDurations}
+          setModeDurations={setModeDurations}
+        />
       </main>
     </>
   );
