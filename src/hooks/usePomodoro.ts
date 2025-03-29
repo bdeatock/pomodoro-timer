@@ -2,6 +2,7 @@ import type { TimerMode } from "../app";
 import { useEffect } from "react";
 import { useStopwatch, useTimer } from "react-timer-hook";
 import { getExpiryTimestamp } from "../utils";
+import { useLocalStorage } from "./useLocalStorage";
 
 interface UsePomodoroOptions {
   /** Current timer mode (focus, short break, long break) */
@@ -30,10 +31,22 @@ export function usePomodoro({
   const totalSecondsBetweenLongBreaks =
     modeDurations["long break"] * targetPomodoroCount * 60;
 
+  const [focusTime, setFocusTime] = useLocalStorage<number>("focusTime", 0);
+
+  const focusTimeOffsetTimestamp = new Date();
+  focusTimeOffsetTimestamp.setSeconds(
+    focusTimeOffsetTimestamp.getSeconds() + focusTime,
+  );
+
   const focusTimeStopwatch = useStopwatch({
     autoStart: false,
     interval: 200,
+    offsetTimestamp: focusTimeOffsetTimestamp,
   });
+
+  useEffect(() => {
+    setFocusTime(focusTimeStopwatch.totalSeconds);
+  }, [focusTimeStopwatch.totalSeconds, setFocusTime]);
 
   const timer = useTimer({
     expiryTimestamp: getExpiryTimestamp(modeDurations[mode] * 60),
