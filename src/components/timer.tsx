@@ -1,17 +1,44 @@
-import { useState } from "react";
+import type { TimerMode } from "../app";
+import { useEffect } from "react";
+import { useTimer } from "react-timer-hook";
+import { formatTime, getExpiryTimestamp } from "../utils";
 import CentreTimer from "./centre-timer/centre-timer";
-import ModeSwitcher from "./mode-switcher/mode-switcher";
 
-export type TimerMode = "focus" | "short break" | "long break";
+const Timer = ({
+  mode,
+  modeDurations,
+}: {
+  mode: TimerMode;
+  modeDurations: Record<TimerMode, number>;
+}) => {
+  const {
+    totalSeconds: remainingSeconds,
+    isRunning,
+    resume,
+    pause,
+    restart,
+  } = useTimer({
+    expiryTimestamp: getExpiryTimestamp(modeDurations[mode] * 60),
+    interval: 200,
+    autoStart: false,
+    onExpire: () => {
+      console.warn("expired");
+    },
+  });
 
-const Timer = () => {
-  const [mode, setMode] = useState<TimerMode>("focus");
+  useEffect(() => {
+    restart(getExpiryTimestamp(modeDurations[mode] * 60), false);
+  }, [mode, modeDurations, restart]);
 
   return (
     <>
-      <ModeSwitcher mode={mode} setMode={setMode} />
       <p>Time until long break: 48m</p>
-      <CentreTimer />
+      <CentreTimer
+        remainingTime={formatTime(remainingSeconds)}
+        resumeTimer={resume}
+        pauseTimer={pause}
+        isRunning={isRunning}
+      />
       <p>Today: 2h 15m</p>
     </>
   );

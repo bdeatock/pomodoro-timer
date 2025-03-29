@@ -1,4 +1,4 @@
-import type { TimerMode } from "../timer";
+import type { TimerMode } from "../../app";
 import ModeSwitchButton from "./mode-switch-button";
 
 const ModeSwitcher = ({

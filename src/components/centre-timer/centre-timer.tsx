@@ -1,8 +1,23 @@
-const CentreTimer = () => {
+const CentreTimer = ({
+  remainingTime,
+  resumeTimer,
+  pauseTimer,
+  isRunning,
+}: {
+  remainingTime: string;
+  resumeTimer: () => void;
+  pauseTimer: () => void;
+  isRunning: boolean;
+}) => {
   return (
-    <div className="flex h-40 w-40 items-center justify-center rounded-full bg-gray-800">
-      <p>25:00</p>
-    </div>
+    <button
+      type="button"
+      onClick={isRunning ? pauseTimer : resumeTimer}
+      className="flex h-40 w-40 cursor-pointer items-center justify-center rounded-full bg-gray-800"
+      aria-label="Pause/Resume timer"
+    >
+      <p>{remainingTime}</p>
+    </button>
   );
 };
 
