@@ -36,9 +36,9 @@ const Timer = ({
   return (
     <>
       <FocusUntilBreak
-        timeUntilBreak={formatTimeWithUnits(
-          totalSecondsBetweenLongBreaks - focusTimeStopwatch.totalSeconds,
-        )}
+        secondsUntilBreak={
+          totalSecondsBetweenLongBreaks - focusTimeStopwatch.totalSeconds
+        }
       />
       <CentreTimer
         remainingTime={formatTime(timer.totalSeconds)}

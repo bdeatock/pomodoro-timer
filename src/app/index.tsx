@@ -11,9 +11,9 @@ const App = () => {
   const [modeDurations, _setModeDurations] = useState<
     Record<TimerMode, number>
   >({
-    focus: 1,
-    "short break": 1,
-    "long break": 2,
+    focus: 25,
+    "short break": 5,
+    "long break": 15,
   });
 
   const pomosPerLongBreak = 4;
