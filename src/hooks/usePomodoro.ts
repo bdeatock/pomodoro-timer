@@ -29,7 +29,7 @@ export function usePomodoro({
   onExpire,
 }: UsePomodoroOptions) {
   const totalSecondsBetweenLongBreaks =
-    modeDurations["long break"] * targetPomodoroCount * 60;
+    modeDurations["focus"] * targetPomodoroCount * 60;
 
   const [focusTime, setFocusTime] = useLocalStorageWithDailyReset<number>({
     key: "focusTime",
