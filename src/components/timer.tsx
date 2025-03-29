@@ -23,6 +23,7 @@ const Timer = ({
     focusTimeStopwatch,
     toggleTimer,
     totalSecondsBetweenLongBreaks,
+    focusTimeUntilNextLongBreak,
   } = usePomodoro({
     mode,
     modeDurations,
@@ -35,11 +36,7 @@ const Timer = ({
 
   return (
     <>
-      <FocusUntilBreak
-        secondsUntilBreak={
-          totalSecondsBetweenLongBreaks - focusTimeStopwatch.totalSeconds
-        }
-      />
+      <FocusUntilBreak secondsUntilBreak={focusTimeUntilNextLongBreak} />
       <CentreTimer
         remainingTime={formatTime(timer.totalSeconds)}
         toggleTimer={toggleTimer}

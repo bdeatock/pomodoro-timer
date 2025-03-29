@@ -36,6 +36,12 @@ export function usePomodoro({
     defaultValue: 0,
   });
 
+  const [longBreakOffset, setLongBreakOffset] =
+    useLocalStorageWithDailyReset<number>({
+      key: "longBreakOffset",
+      defaultValue: 0,
+    });
+
   const focusTimeOffsetTimestamp = new Date();
   focusTimeOffsetTimestamp.setSeconds(
     focusTimeOffsetTimestamp.getSeconds() + focusTime,
@@ -90,8 +96,17 @@ export function usePomodoro({
       } else {
         focusTimeStopwatch.pause();
       }
+
+      if (mode === "long break") {
+        setLongBreakOffset(focusTimeStopwatch.totalSeconds);
+      }
     }
   };
+
+  const focusTimeUntilNextLongBreak =
+    totalSecondsBetweenLongBreaks +
+    longBreakOffset -
+    focusTimeStopwatch.totalSeconds;
 
   return {
     timer: {
@@ -105,5 +120,6 @@ export function usePomodoro({
     },
     toggleTimer,
     totalSecondsBetweenLongBreaks,
+    focusTimeUntilNextLongBreak,
   };
 }
