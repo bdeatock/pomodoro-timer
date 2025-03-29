@@ -21,3 +21,8 @@ export const formatTimeWithUnits = (seconds: number) => {
     return `${minutes}m`;
   }
 };
+
+export const isDateStringToday = (dateString: string) => {
+  const today = new Date();
+  return dateString === today.toDateString();
+};
