@@ -43,6 +43,7 @@ const Timer = ({
       <CentreTimer
         remainingTime={formatTime(timer.totalSeconds)}
         toggleTimer={toggleTimer}
+        isFocusActive={focusTimeStopwatch.isRunning}
       />
       <DailyTracker
         totalDailyFocusTime={formatTimeWithUnits(

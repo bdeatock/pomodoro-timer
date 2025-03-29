@@ -1,17 +1,22 @@
 interface CentreTimerProps {
   remainingTime: string;
   toggleTimer: () => void;
+  isFocusActive: boolean;
 }
 
-const CentreTimer = ({ remainingTime, toggleTimer }: CentreTimerProps) => {
+const CentreTimer = ({
+  remainingTime,
+  toggleTimer,
+  isFocusActive,
+}: CentreTimerProps) => {
   return (
     <button
       type="button"
       onClick={toggleTimer}
-      className="flex h-40 w-40 cursor-pointer items-center justify-center rounded-full bg-gray-800"
+      className="flex h-40 w-40 cursor-pointer items-center justify-center rounded-full bg-foreground"
       aria-label="Toggle timer"
     >
-      <p>{remainingTime}</p>
+      <p className={isFocusActive ? "text-focus" : ""}>{remainingTime}</p>
     </button>
   );
 };

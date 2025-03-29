@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+  /* ====== Main Colours ====== */
+  --color-focus: oklch(0.577 0.245 27.325);
+  --color-short-break: oklch(0.6 0.118 184.704);
+  --color-long-break: oklch(0.558 0.288 302.321);
+  --color-background: oklch(0.21 0.034 264.665);
+  --color-foreground: oklch(0.278 0.033 256.848);
+  --color-primary: oklch(0.967 0.003 264.542);
+  /*  ========================= */
+
+  /* ====== Calculated Colours ====== */
+  --color-focus-lighter: color-mix(in oklch, var(--color-focus), white 20%);
+  --color-focus-darker: color-mix(in oklch, var(--color-focus), black 20%);
+
+  --color-short-break-darker: color-mix(
+    in oklch,
+    var(--color-short-break),
+    black 20%
+  );
+
+  --color-long-break-darker: color-mix(
+    in oklch,
+    var(--color-long-break),
+    black 20%
+  );
+
+  --color-primary-darker: color-mix(in oklch, var(--color-primary), black 20%);
+
+  --color-background-lighter: color-mix(
+    in oklch,
+    var(--color-background),
+    white 20%
+  );
+}

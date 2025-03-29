@@ -15,7 +15,7 @@ const ModeSwitchButton = ({
     <button
       type="button"
       onClick={() => setMode(mode)}
-      className={`${mode === currentMode ? colour : "bg-gray-800"} rounded-full px-4 py-2`}
+      className={`${mode === currentMode ? colour : "bg-foreground"} rounded-full px-4 py-2 transition-colors duration-300`}
     >
       {mode}
     </button>

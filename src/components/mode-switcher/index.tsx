@@ -9,23 +9,23 @@ const ModeSwitcher = ({
   setMode: (mode: TimerMode) => void;
 }) => {
   return (
-    <div className="flex gap-2 rounded-full bg-gray-800">
+    <div className="flex gap-2 rounded-full bg-foreground">
       <ModeSwitchButton
         mode="focus"
         setMode={setMode}
-        colour="bg-yellow-600"
+        colour="bg-focus-darker"
         currentMode={mode}
       />
       <ModeSwitchButton
         mode="short break"
         setMode={setMode}
-        colour="bg-teal-600"
+        colour="bg-short-break"
         currentMode={mode}
       />
       <ModeSwitchButton
         mode="long break"
         setMode={setMode}
-        colour="bg-purple-600"
+        colour="bg-long-break"
         currentMode={mode}
       />
     </div>

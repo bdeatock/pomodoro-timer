@@ -85,6 +85,7 @@ export function usePomodoro({
     },
     focusTimeStopwatch: {
       totalSeconds: focusTimeStopwatch.totalSeconds,
+      isRunning: focusTimeStopwatch.isRunning,
     },
     toggleTimer,
     totalSecondsBetweenLongBreaks,
