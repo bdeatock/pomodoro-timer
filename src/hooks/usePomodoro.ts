@@ -28,6 +28,9 @@ export function usePomodoro({
   targetPomodoroCount,
   onExpire,
 }: UsePomodoroOptions) {
+  // TODO: Switch to long break mode if focus is running and short break is active?
+  // ^ Req focus stopwatch to stop running when user changes mode
+
   const totalSecondsBetweenLongBreaks =
     modeDurations["focus"] * targetPomodoroCount * 60;
 
@@ -64,10 +67,7 @@ export function usePomodoro({
     onExpire: () => {
       if (mode === "short break" || mode === "long break") {
         setMode("focus");
-      } else if (
-        totalSecondsBetweenLongBreaks - focusTimeStopwatch.totalSeconds <
-        0
-      ) {
+      } else if (focusTimeUntilNextLongBreak <= 0) {
         setMode("long break");
       } else {
         setMode("short break");
