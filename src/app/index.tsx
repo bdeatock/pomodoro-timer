@@ -3,7 +3,7 @@ import DailyTracker from "@/components/daily-tracker";
 import FocusUntilBreak from "@/components/focus-until-break";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { usePomodoro } from "@/hooks/usePomodoro";
-import { formatTime, formatTimeWithUnits } from "@/lib";
+import { formatTimeWithUnits } from "@/lib";
 import { useEffect, useRef, useState } from "react";
 import ModeSwitcher from "../components/mode-switcher";
 import Settings from "../components/settings";
