@@ -1,4 +1,7 @@
 import type { TimerMode } from "../app";
+import { useEffect, useRef } from "react";
+import alarmSound from "../assets/alarm.wav";
+import clickSound from "../assets/click.wav";
 import { usePomodoro } from "../hooks/usePomodoro";
 import { formatTime, formatTimeWithUnits } from "../lib";
 import CentreTimer from "./centre-timer/centre-timer";
@@ -18,6 +21,14 @@ const Timer = ({
   setMode,
   pomosPerLongBreak,
 }: TimerProps) => {
+  const clickRef = useRef<HTMLAudioElement | null>(null);
+  const alarmRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (clickRef.current === null) clickRef.current = new Audio(clickSound);
+    if (alarmRef.current === null) alarmRef.current = new Audio(alarmSound);
+  }, []);
+
   const {
     timer,
     focusTimeStopwatch,
@@ -28,7 +39,10 @@ const Timer = ({
     modeDurations,
     setMode,
     onExpire: () => {
-      console.warn("Timer expired");
+      void alarmRef.current?.play();
+    },
+    onPlayPause: () => {
+      void clickRef.current?.play();
     },
     targetPomodoroCount: pomosPerLongBreak,
   });

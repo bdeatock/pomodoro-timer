@@ -14,7 +14,9 @@ interface UsePomodoroOptions {
   /** Number of pomodoros to complete before a long break (default: 4) */
   targetPomodoroCount: number;
   /** Callback function to execute when the timer expires */
-  onExpire: () => void;
+  onExpire?: () => void;
+  /** Callback function to execute when the timer is played */
+  onPlayPause?: () => void;
 }
 
 /**
@@ -27,6 +29,7 @@ export function usePomodoro({
   setMode,
   targetPomodoroCount,
   onExpire,
+  onPlayPause,
 }: UsePomodoroOptions) {
   // TODO: Switch to long break mode if focus is running and short break is active?
   // ^ Req focus stopwatch to stop running when user changes mode
@@ -106,6 +109,8 @@ export function usePomodoro({
         setLongBreakOffset(focusTimeStopwatch.totalSeconds);
       }
     }
+
+    onPlayPause?.();
   };
 
   return {
