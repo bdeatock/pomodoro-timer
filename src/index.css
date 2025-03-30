@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
+  --font-audiowide: Audiowide, sans-serif;
+
   /* ====== Main Colours ====== */
   --color-focus: oklch(0.577 0.245 27.325);
   --color-short-break: oklch(0.6 0.118 184.704);

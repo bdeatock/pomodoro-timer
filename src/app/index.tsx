@@ -24,8 +24,8 @@ const App = () => {
   return (
     <>
       <main className="flex h-screen flex-col items-center justify-center gap-4 bg-background text-primary">
-        <h1 className="absolute top-0 mt-4 text-4xl font-bold text-primary">
-          Pomodoro Timer
+        <h1 className="absolute top-0 mt-6 font-audiowide text-4xl font-normal tracking-wider text-primary">
+          pomodoro
         </h1>
 
         <ModeSwitcher mode={mode} setMode={setMode} />
