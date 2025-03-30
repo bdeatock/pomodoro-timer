@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
-import { isDateStringToday } from "../utils";
+import { isDateStringToday } from "../lib";
 
 export function getStorageValue<T>(key: string, defaultValue: T): T {
   const value = localStorage.getItem(key);
-  return value ? JSON.parse(value) : defaultValue;
+  if (value === null || value === undefined || value === "") {
+    return defaultValue;
+  }
+  return JSON.parse(value) as T;
 }
 
 interface UseLocalStorageOptions<T> {
@@ -50,7 +52,7 @@ export function useLocalStorageWithDailyReset<T>({
   React.Dispatch<React.SetStateAction<T>>,
 ] {
   const [lastResetDate, setLastResetDate] = useLocalStorage<string>({
-    key: key + "-last-reset-date",
+    key: `${key}-last-reset-date`,
     defaultValue: new Date().toDateString(),
   });
 

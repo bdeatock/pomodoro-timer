@@ -1,4 +1,4 @@
-import { formatTimeWithUnits } from "../utils";
+import { formatTimeWithUnits } from "../lib";
 
 interface FocusUntilBreakProps {
   secondsUntilBreak: number;

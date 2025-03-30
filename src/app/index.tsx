@@ -1,8 +1,8 @@
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useState } from "react";
 import ModeSwitcher from "../components/mode-switcher";
-import Timer from "../components/timer";
 import Settings from "../components/settings";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import Timer from "../components/timer";
 
 export type TimerMode = "focus" | "short break" | "long break";
 

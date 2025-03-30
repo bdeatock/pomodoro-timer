@@ -1,6 +1,6 @@
 import type { TimerMode } from "../app";
 import { usePomodoro } from "../hooks/usePomodoro";
-import { formatTime, formatTimeWithUnits } from "../utils";
+import { formatTime, formatTimeWithUnits } from "../lib";
 import CentreTimer from "./centre-timer/centre-timer";
 import DailyTracker from "./daily-tracker";
 import FocusUntilBreak from "./focus-until-break";
