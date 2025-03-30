@@ -1,5 +1,5 @@
+import type { TimerMode } from "../../app";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { TimerMode } from "../../app";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -8,9 +8,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "../ui/dialog";
-import { DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
+
 interface SettingsProps {
   modeDurations: Record<TimerMode, number>;
   setModeDurations: (modeDurations: Record<TimerMode, number>) => void;
@@ -30,7 +31,10 @@ const Settings = ({ modeDurations, setModeDurations }: SettingsProps) => {
         </DialogHeader>
         <div className="flex gap-2 px-6 pb-12">
           {Object.entries(modeDurations).map(([mode, duration]) => (
-            <div className="grid w-full max-w-sm items-center gap-1.5">
+            <div
+              key={mode}
+              className="grid w-full max-w-sm items-center gap-1.5"
+            >
               <label
                 htmlFor={`${mode}-duration`}
                 className="text-muted-foreground text-sm"
