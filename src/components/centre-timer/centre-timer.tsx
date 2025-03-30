@@ -27,9 +27,9 @@ const CentreTimer = ({
           : isTimerActive && mode === "long break"
             ? "main-timer-box-shadow-long-break"
             : "main-timer-box-shadow"
-    } relative z-10 flex h-80 w-80 items-center justify-center rounded-full bg-background bg-linear-300 from-foreground to-background transition-all duration-300 hover:scale-105`}
+    } relative z-10 flex h-96 w-96 items-center justify-center rounded-full bg-background bg-linear-300 from-foreground to-background transition-all duration-300 hover:scale-105`}
   >
-    <div className="z-20 flex h-72 w-72 cursor-pointer flex-col items-center justify-center rounded-full bg-background">
+    <div className="z-20 flex h-80 w-80 cursor-pointer flex-col items-center justify-center rounded-full bg-background">
       <p className="absolute top-16 text-center font-audiowide text-lg text-focus/60">
         {isFocusActive ? "FOCUS ACTIVE" : ""}
       </p>

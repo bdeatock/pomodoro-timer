@@ -10,7 +10,7 @@ const FocusUntilBreak = ({ secondsUntilBreak }: FocusUntilBreakProps) => {
   const isLongBreakReady = secondsUntilBreak <= 0;
 
   return (
-    <p className="p-6 font-mono text-lg">
+    <p className="p-12 font-mono text-lg">
       {isLongBreakReady ? longBreakMsg : timeRemainingMsg}
     </p>
   );

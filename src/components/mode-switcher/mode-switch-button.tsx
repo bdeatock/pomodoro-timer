@@ -16,7 +16,7 @@ const ModeSwitchButton: React.FC<ModeSwitchButtonProps> = ({
   <button
     type="button"
     onClick={() => setMode(mode)}
-    className={`${mode === currentMode ? colour : "bg-foreground"} my-2 w-36 rounded-full px-4 py-2 transition-colors duration-300`}
+    className={`${mode === currentMode ? colour : "bg-foreground hover:text-gray-400"} my-2 w-32 rounded-lg transition-colors duration-300`}
   >
     {mode}
   </button>

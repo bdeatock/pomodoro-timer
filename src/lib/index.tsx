@@ -16,7 +16,7 @@ export const formatTimeWithUnits = (seconds: number) => {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
   if (hours >= 1) {
-    return `${hours}h ${minutes}m`;
+    return `${hours}h${minutes}m`;
   } else {
     return `${minutes}m`;
   }
