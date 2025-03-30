@@ -3,7 +3,7 @@ interface DailyTrackerProps {
 }
 
 const DailyTracker = ({ totalDailyFocusTime }: DailyTrackerProps) => (
-  <p>Today: {totalDailyFocusTime}</p>
+  <p className="font-audiowide text-lg">Today: {totalDailyFocusTime}</p>
 );
 
 export default DailyTracker;

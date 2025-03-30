@@ -3,6 +3,37 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+.main-timer-box-shadow-focussed {
+  box-shadow:
+    50px 50px 100px 0px color-mix(in oklch, var(--color-focus), transparent 90%),
+    -50px -50px 100px 0px
+      color-mix(in oklch, var(--color-focus), transparent 90%);
+}
+
+.main-timer-box-shadow-short-break {
+  box-shadow:
+    50px 50px 100px 0px
+      color-mix(in oklch, var(--color-short-break), transparent 95%),
+    -50px -50px 100px 0px
+      color-mix(in oklch, var(--color-short-break), transparent 95%);
+}
+
+.main-timer-box-shadow-long-break {
+  box-shadow:
+    50px 50px 100px 0px
+      color-mix(in oklch, var(--color-long-break), transparent 95%),
+    -50px -50px 100px 0px
+      color-mix(in oklch, var(--color-long-break), transparent 95%);
+}
+
+.main-timer-box-shadow {
+  box-shadow:
+    50px 50px 100px 0px
+      color-mix(in oklch, var(--color-background-lighter), transparent 90%),
+    -50px -50px 100px 0px
+      color-mix(in oklch, var(--color-background-lighter), transparent 90%);
+}
+
 @theme {
   --font-audiowide: Audiowide, sans-serif;
 
@@ -36,6 +67,11 @@
   --color-background-lighter: color-mix(
     in oklch,
     var(--color-background),
-    white 20%
+    white 5%
+  );
+  --color-background-darker: color-mix(
+    in oklch,
+    var(--color-background),
+    black 5%
   );
 }

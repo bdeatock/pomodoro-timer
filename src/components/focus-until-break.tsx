@@ -9,7 +9,11 @@ const FocusUntilBreak = ({ secondsUntilBreak }: FocusUntilBreakProps) => {
   const longBreakMsg = "Long break time!";
   const isLongBreakReady = secondsUntilBreak <= 0;
 
-  return <p>{isLongBreakReady ? longBreakMsg : timeRemainingMsg}</p>;
+  return (
+    <p className="font-audiowide text-lg">
+      {isLongBreakReady ? longBreakMsg : timeRemainingMsg}
+    </p>
+  );
 };
 
 export default FocusUntilBreak;

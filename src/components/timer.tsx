@@ -50,11 +50,15 @@ const Timer = ({
   return (
     <>
       <FocusUntilBreak secondsUntilBreak={focusTimeUntilNextLongBreak} />
-      <CentreTimer
-        remainingTime={formatTime(timer.totalSeconds)}
-        toggleTimer={toggleTimer}
-        isFocusActive={focusTimeStopwatch.isRunning}
-      />
+      <div className="flex flex-1 items-center">
+        <CentreTimer
+          remainingTime={formatTime(timer.totalSeconds)}
+          toggleTimer={toggleTimer}
+          isFocusActive={focusTimeStopwatch.isRunning}
+          isTimerActive={timer.isRunning}
+          mode={mode}
+        />
+      </div>
       <DailyTracker
         totalDailyFocusTime={formatTimeWithUnits(
           focusTimeStopwatch.totalSeconds,
