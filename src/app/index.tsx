@@ -73,11 +73,12 @@ const App = () => {
             <div className="flex flex-1 flex-col items-center justify-around">
               <div />
               <CentreTimer
-                remainingTime={formatTime(timer.totalSeconds)}
+                remainingTime={timer.totalSeconds}
                 toggleTimer={toggleTimer}
                 isFocusActive={focusTimeStopwatch.isRunning}
                 isTimerActive={timer.isRunning}
                 mode={mode}
+                modeDurations={modeDurations}
               />
 
               <DailyTracker
