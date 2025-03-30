@@ -5,12 +5,12 @@ interface FocusUntilBreakProps {
 }
 
 const FocusUntilBreak = ({ secondsUntilBreak }: FocusUntilBreakProps) => {
-  const timeRemainingMsg = `Focus time until next long break: ${formatTimeWithUnits(secondsUntilBreak)}`;
+  const timeRemainingMsg = `Long break in ${formatTimeWithUnits(secondsUntilBreak)}`;
   const longBreakMsg = "Long break time!";
   const isLongBreakReady = secondsUntilBreak <= 0;
 
   return (
-    <p className="font-audiowide text-lg">
+    <p className="p-6 font-mono text-lg">
       {isLongBreakReady ? longBreakMsg : timeRemainingMsg}
     </p>
   );

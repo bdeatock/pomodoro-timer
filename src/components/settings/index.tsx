@@ -36,7 +36,7 @@ const Settings: React.FC<SettingsProps> = ({
           <div key={mode} className="grid w-full max-w-sm items-center gap-1.5">
             <label
               htmlFor={`${mode}-duration`}
-              className="text-muted-foreground text-sm"
+              className="text-muted-foreground font-mono text-sm"
             >
               {mode}
             </label>

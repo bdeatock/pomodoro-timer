@@ -7,7 +7,7 @@ interface ModeSwitcherProps {
 }
 
 const ModeSwitcher: React.FC<ModeSwitcherProps> = ({ mode, setMode }) => (
-  <div className="flex gap-2 rounded-full bg-foreground font-mono">
+  <div className="flex h-16 rounded-4xl bg-foreground px-2 font-mono">
     <ModeSwitchButton
       mode="focus"
       setMode={setMode}
