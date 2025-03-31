@@ -1,13 +1,14 @@
+import { usePomodoroContext } from "@/context/PomodoroContext";
 import { formatTimeWithUnits } from "../lib";
 
-interface FocusUntilBreakProps {
-  secondsUntilBreak: number;
-}
+const FocusUntilBreak = () => {
+  const { focusTimeUntilNextLongBreak } = usePomodoroContext();
 
-const FocusUntilBreak = ({ secondsUntilBreak }: FocusUntilBreakProps) => {
-  const timeRemainingMsg = `Long break in ${formatTimeWithUnits(secondsUntilBreak)}`;
+  const timeRemainingMsg = `Long break in ${formatTimeWithUnits(
+    focusTimeUntilNextLongBreak,
+  )}`;
   const longBreakMsg = "Long break time!";
-  const isLongBreakReady = secondsUntilBreak <= 0;
+  const isLongBreakReady = focusTimeUntilNextLongBreak <= 0;
 
   return (
     <p className="p-12 font-mono text-lg">

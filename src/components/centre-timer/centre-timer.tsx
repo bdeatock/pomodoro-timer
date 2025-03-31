@@ -1,24 +1,18 @@
-import type { TimerMode } from "@/app";
+import type { TimerMode } from "@/app/app";
+import { usePomodoroContext } from "@/context/PomodoroContext";
 import { formatTime } from "@/lib";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
-interface CentreTimerProps {
-  remainingTime: number;
-  toggleTimer: () => void;
-  isFocusActive: boolean;
-  isTimerActive: boolean;
-  mode: TimerMode;
-  modeDurations: Record<TimerMode, number>;
-}
+const CentreTimer = () => {
+  const {
+    mode,
+    isTimerActive,
+    isFocusActive,
+    remainingTime,
+    toggleTimer,
+    modeDurations,
+  } = usePomodoroContext();
 
-const CentreTimer = ({
-  mode,
-  remainingTime,
-  toggleTimer,
-  isFocusActive,
-  isTimerActive,
-  modeDurations,
-}: CentreTimerProps) => {
   const modeColourMap: Record<TimerMode, string> = {
     focus: "focus-darker",
     "short break": "short-break-darker",

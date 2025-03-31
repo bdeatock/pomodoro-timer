@@ -1,4 +1,4 @@
-import type { TimerMode } from "../app";
+import type { TimerMode } from "../app/app";
 import { useEffect } from "react";
 import { useStopwatch, useTimer } from "react-timer-hook";
 import { getExpiryTimestamp } from "../lib";
@@ -23,14 +23,14 @@ interface UsePomodoroOptions {
  * This hook handles the timer logic for a Pomodoro timer,
  * including tracking total focus time (time from focus mode starting and break actually starting) and managing breaks.
  */
-export function usePomodoro({
+const usePomodoro = ({
   mode,
   modeDurations,
   setMode,
   targetPomodoroCount,
   onExpire,
   onPlayPause,
-}: UsePomodoroOptions) {
+}: UsePomodoroOptions) => {
   // TODO: Switch to long break mode if focus is running and short break is active?
   // ^ Req focus stopwatch to stop running when user changes mode
 
@@ -126,4 +126,6 @@ export function usePomodoro({
     toggleTimer,
     focusTimeUntilNextLongBreak,
   };
-}
+};
+
+export default usePomodoro;
