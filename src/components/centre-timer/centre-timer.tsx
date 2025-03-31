@@ -1,6 +1,6 @@
 import type { TimerMode } from "@/app";
 import { formatTime } from "@/lib";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
 interface CentreTimerProps {
   remainingTime: number;
@@ -19,7 +19,13 @@ const CentreTimer = ({
   isTimerActive,
   modeDurations,
 }: CentreTimerProps) => {
-  const pathColor = `var(--color-${mode}-darker)`;
+  const modeColourMap: Record<TimerMode, string> = {
+    focus: "focus-darker",
+    "short break": "short-break-darker",
+    "long break": "long-break-darker",
+  };
+
+  const pathColor = `var(--color-${modeColourMap[mode]})`;
 
   return (
     <button
@@ -42,13 +48,11 @@ const CentreTimer = ({
           value={remainingTime}
           maxValue={modeDurations[mode] * 60}
           strokeWidth={3}
-          styles={{
-            path: {
-              stroke: pathColor,
-              strokeLinecap: "round",
-              transition: "stroke-dashoffset 1s ease 0s",
-            },
-          }}
+          styles={buildStyles({
+            pathColor,
+            strokeLinecap: "round",
+            pathTransitionDuration: 0.5,
+          })}
         />
         <p className="absolute top-20 text-center font-audiowide text-lg text-focus/60">
           {isFocusActive ? "FOCUS ACTIVE" : ""}
