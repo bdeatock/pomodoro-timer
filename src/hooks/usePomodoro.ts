@@ -1,7 +1,7 @@
 import type { TimerMode } from "../app/app";
 import { useEffect } from "react";
 import { useStopwatch, useTimer } from "react-timer-hook";
-import { getExpiryTimestamp } from "../lib";
+import { formatTime, getExpiryTimestamp } from "../lib";
 import { useLocalStorageWithDailyReset } from "./useLocalStorage";
 
 interface UsePomodoroOptions {
@@ -31,9 +31,6 @@ const usePomodoro = ({
   onExpire,
   onPlayPause,
 }: UsePomodoroOptions) => {
-  // TODO: Switch to long break mode if focus is running and short break is active?
-  // ^ Req focus stopwatch to stop running when user changes mode
-
   const totalSecondsBetweenLongBreaks =
     modeDurations.focus * targetPomodoroCount * 60;
 
@@ -59,6 +56,7 @@ const usePomodoro = ({
     offsetTimestamp: focusTimeOffsetTimestamp,
   });
 
+  // Update the focus time in local storage when the stopwatch changes
   useEffect(() => {
     setFocusTime(focusTimeStopwatch.totalSeconds);
   }, [focusTimeStopwatch.totalSeconds, setFocusTime]);
@@ -85,6 +83,7 @@ const usePomodoro = ({
     },
   });
 
+  // Restart the timer when the mode changes
   useEffect(() => {
     timer.restart(getExpiryTimestamp(modeDurations[mode] * 60), false);
   }, [mode, modeDurations, timer.restart]);
@@ -112,6 +111,11 @@ const usePomodoro = ({
 
     onPlayPause?.();
   };
+
+  // Update the document title when the timer mode changes
+  useEffect(() => {
+    document.title = `${mode} - ${formatTime(timer.totalSeconds)}`;
+  }, [mode, timer.totalSeconds]);
 
   return {
     timer: {
