@@ -98,7 +98,7 @@ export function usePomodoro({
       timer.pause();
       focusTimeStopwatch.pause();
     } else {
-      timer.start();
+      timer.resume();
       if (mode === "focus") {
         focusTimeStopwatch.start();
       } else {
