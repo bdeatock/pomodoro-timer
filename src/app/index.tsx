@@ -4,12 +4,12 @@ import FocusUntilBreak from "@/components/focus-until-break";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { usePomodoro } from "@/hooks/usePomodoro";
 import { formatTimeWithUnits } from "@/lib";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import alarmSoundFile from "../assets/alarm.wav";
+import clickSoundFile from "../assets/click.wav";
+
 import ModeSwitcher from "../components/mode-switcher";
 import Settings from "../components/settings";
-
-const clickSound = "../assets/click.wav";
-const alarmSound = "../assets/alarm.wav";
 
 export type TimerMode = "focus" | "short break" | "long break";
 
@@ -28,11 +28,8 @@ const App = () => {
 
   const clickRef = useRef<HTMLAudioElement | null>(null);
   const alarmRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    if (clickRef.current === null) clickRef.current = new Audio(clickSound);
-    if (alarmRef.current === null) alarmRef.current = new Audio(alarmSound);
-  }, []);
+  if (clickRef.current === null) clickRef.current = new Audio(clickSoundFile);
+  if (alarmRef.current === null) alarmRef.current = new Audio(alarmSoundFile);
 
   const pomosPerLongBreak = 4;
 
@@ -53,10 +50,6 @@ const App = () => {
     },
     targetPomodoroCount: pomosPerLongBreak,
   });
-
-  // TODO: change structure, remove Timer comonent, and handle it in here.
-  // Top 3 elements can be spaced normally, then remaining elements fit screen
-  // with justify-evenly.
 
   return (
     <>
