@@ -1,5 +1,5 @@
 import type { TimerMode } from "../../app/app";
-import { usePomodoroContext } from "@/context/PomodoroContext";
+import { usePomodoroContext } from "@/context/pomodoro-context";
 
 interface ModeSwitchButtonProps {
   buttonMode: TimerMode;

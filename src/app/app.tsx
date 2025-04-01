@@ -1,7 +1,7 @@
 import CentreTimer from "@/components/centre-timer/centre-timer";
 import DailyTracker from "@/components/daily-tracker";
 import FocusUntilBreak from "@/components/focus-until-break";
-import { PomodoroProvider } from "@/context/PomodoroContext";
+import { PomodoroProvider } from "@/context/pomodoro-context";
 import ModeSwitcher from "../components/mode-switcher/mode-switcher";
 import Settings from "../components/settings/settings";
 

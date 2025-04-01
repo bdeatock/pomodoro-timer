@@ -1,8 +1,8 @@
 import type { TimerMode } from "@/app/app";
 import type { ReactNode } from "react";
-import useAudio from "@/hooks/useAudio";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
-import usePomodoro from "@/hooks/usePomodoro";
+import useAudio from "@/hooks/use-audio";
+import { useLocalStorage } from "@/hooks/use-local-storage";
+import usePomodoro from "@/hooks/use-pomodoro";
 import { createContext, use, useState } from "react";
 import alarmSoundFile from "../assets/alarm.wav";
 import clickSoundFile from "../assets/click.wav";

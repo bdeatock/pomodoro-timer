@@ -2,7 +2,7 @@ import type { TimerMode } from "../app/app";
 import { useEffect } from "react";
 import { useStopwatch, useTimer } from "react-timer-hook";
 import { formatTime, getExpiryTimestamp } from "../lib";
-import { useLocalStorageWithDailyReset } from "./useLocalStorage";
+import { useLocalStorageWithDailyReset } from "./use-local-storage";
 
 interface UsePomodoroOptions {
   /** Current timer mode (focus, short break, long break) */

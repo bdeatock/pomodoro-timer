@@ -1,4 +1,4 @@
-import { usePomodoroContext } from "@/context/PomodoroContext";
+import { usePomodoroContext } from "@/context/pomodoro-context";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button } from "../ui/button";
 import {

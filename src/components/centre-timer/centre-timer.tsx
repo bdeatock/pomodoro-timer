@@ -1,5 +1,5 @@
 import type { TimerMode } from "@/app/app";
-import { usePomodoroContext } from "@/context/PomodoroContext";
+import { usePomodoroContext } from "@/context/pomodoro-context";
 import { formatTime } from "@/lib";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 

@@ -1,4 +1,4 @@
-import { usePomodoroContext } from "@/context/PomodoroContext";
+import { usePomodoroContext } from "@/context/pomodoro-context";
 import { formatTimeWithUnits } from "../lib";
 
 const FocusUntilBreak = () => {
