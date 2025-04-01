@@ -14,12 +14,10 @@ const CentreTimer = () => {
   } = usePomodoroContext();
 
   const modeColourMap: Record<TimerMode, string> = {
-    focus: "focus-darker",
-    "short break": "short-break-darker",
-    "long break": "long-break-darker",
+    focus: "var(--color-focus-darker)",
+    "short break": "var(--color-short-break-darker)",
+    "long break": "var(--color-long-break-darker)",
   };
-
-  const pathColor = `var(--color-${modeColourMap[mode]})`;
 
   return (
     <button
@@ -43,7 +41,7 @@ const CentreTimer = () => {
           maxValue={modeDurations[mode] * 60}
           strokeWidth={3}
           styles={buildStyles({
-            pathColor,
+            pathColor: modeColourMap[mode],
             strokeLinecap: "round",
             pathTransitionDuration: 0.5,
           })}
