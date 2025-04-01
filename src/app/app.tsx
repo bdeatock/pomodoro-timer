@@ -1,6 +1,7 @@
 import CentreTimer from "@/components/centre-timer/centre-timer";
 import DailyTracker from "@/components/daily-tracker";
 import FocusUntilBreak from "@/components/focus-until-break";
+import NotificationPermission from "@/components/notification-permission";
 import { PomodoroProvider } from "@/context/pomodoro-context";
 import ModeSwitcher from "../components/mode-switcher/mode-switcher";
 import Settings from "../components/settings/settings";
@@ -10,6 +11,7 @@ export type TimerMode = "focus" | "short break" | "long break";
 const App = () => {
   return (
     <PomodoroProvider>
+      <NotificationPermission />
       <div className="w-screen bg-background text-primary">
         <div className="container mx-auto flex h-screen flex-col">
           <header className="flex justify-center">

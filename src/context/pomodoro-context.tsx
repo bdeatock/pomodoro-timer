@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import useAudio from "@/hooks/use-audio";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import usePomodoro from "@/hooks/use-pomodoro";
+import { showNotification } from "@/lib";
 import { createContext, use, useState } from "react";
 import alarmSoundFile from "../assets/alarm.wav";
 import clickSoundFile from "../assets/click.wav";
@@ -57,6 +58,9 @@ export function PomodoroProvider({ children }: PomodoroProviderProps) {
     setMode,
     onExpire: () => {
       void alarmAudio.play();
+      showNotification("Pomodoro complete!", {
+        body: `Your ${mode} timer is complete!`,
+      });
     },
     onPlayPause: () => {
       void clickAudio.play();

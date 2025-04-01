@@ -26,3 +26,14 @@ export const isDateStringToday = (dateString: string) => {
   const today = new Date();
   return dateString === today.toDateString();
 };
+
+export const showNotification = (
+  title: string,
+  options?: NotificationOptions,
+) => {
+  if ("Notification" in window && Notification.permission === "granted") {
+    void new Notification(title, {
+      ...options,
+    });
+  }
+};
