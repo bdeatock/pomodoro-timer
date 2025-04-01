@@ -13,7 +13,7 @@ const App = () => {
       <div className="w-screen bg-background text-primary">
         <div className="container mx-auto flex h-screen flex-col">
           <header className="flex justify-center">
-            <h1 className="mt-6 font-audiowide text-4xl font-normal tracking-wider text-primary">
+            <h1 className="mt-6 font-audiowide text-4xl font-normal tracking-wider text-gray-200 select-none">
               pomodoro
             </h1>
           </header>
